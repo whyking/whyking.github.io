@@ -30,5 +30,24 @@ jobs:
 
       - name: Generate Maven site report
         run: |
-          cd .local/artifact && \
-            mvn --batch-mode site
+          GITHUB_PAGES_PATH=$( \
+            mvn \
+              exec:exec \
+                --file .local/artifact/pom.xml \
+                --non-recursive \
+                --quiet \
+                -Dexec.executable=echo \
+                -Dexec.args='${github-pages.path}' \
+          )
+          MAVEN_VERSION=$( \
+            mvn \
+              exec:exec \
+                --file .local/artifact/pom.xml \
+                --non-recursive \
+                --quiet \
+                -Dexec.executable=echo \
+                -Dexec.args='${project.version}' \
+          )
+          echo $GITHUB_PAGES_PATH
+          echo $MAVEN_VERSION
+
