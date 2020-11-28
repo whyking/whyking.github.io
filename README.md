@@ -1,6 +1,6 @@
 # whyking/git
 
-Generic Git settings for all of my repositories.
+GitHub Pages page of WhyKing.
 
 ## License
 
