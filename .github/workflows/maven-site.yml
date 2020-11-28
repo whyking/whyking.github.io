@@ -39,5 +39,10 @@ jobs:
                 -Dexec.executable=echo \
                 -Dexec.args='${project.version}' \
           )
-          echo $MAVEN_VERSION
+          rm -rf "projects/${{github.event.inputs.trigger-repository}}/${MAVEN_VERSION}"
+          mkdir -p "projects/${{github.event.inputs.trigger-repository}}/${MAVEN_VERSION}"
+          mvn --batch-mode --file .local/artifact/pom.xml site
+          cp -R .local/artifact/target/site/* "projects/${{github.event.inputs.trigger-repository}}/${MAVEN_VERSION}/"
+          git add . -A
+          git commit -m "Maven site report published for ${{github.event.inputs.trigger-repository}}:${MAVEN_VERSION}"
 
