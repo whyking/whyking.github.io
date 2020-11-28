@@ -15,7 +15,8 @@ jobs:
         with:
           java-version: 1.8
 
-      - uses: actions/checkout@v2
+      - name: Checkout '${{github.repository}}' repository
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
@@ -24,10 +25,10 @@ jobs:
         with:
           repository: ${{github.event.inputs.trigger-repository}}
           ref: ${{github.event.inputs.trigger-ref}}
-          path: __artifact
+          path: .local/artifact
           fetch-depth: 0
 
       - name: Generate Maven site report
         run: |
-          cd __artifact && \
+          cd .local/artifact && \
             mvn --batch-mode site
