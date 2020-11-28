@@ -2,9 +2,9 @@ name: Maven site report publishing
 on:
   workflow_dispatch:
     inputs:
-      trigger_repository:
+      trigger-repository:
         required: true
-      trigger_ref:
+      trigger-ref:
         required: true
 jobs:
   build:
@@ -18,3 +18,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+
+      - run: |
+          echo "Log level: ${{ github.event.inputs.trigger-repository }}"
+          echo "Tags: ${{ github.event.inputs.trigger-ref }}"
