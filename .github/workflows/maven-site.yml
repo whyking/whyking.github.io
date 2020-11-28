@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          path: whyking.github.io
           fetch-depth: 0
 
       - name: Set up JDK 1.8
@@ -22,3 +23,11 @@ jobs:
       - run: |
           echo "Log level: ${{ github.event.inputs.trigger-repository }}"
           echo "Tags: ${{ github.event.inputs.trigger-ref }}"
+
+      - name: Checkout 'whyking.github.io' repo
+        uses: actions/checkout@v2
+        with:
+          repository: ${{github.event.inputs.trigger-repository}}
+          ref: ${{github.event.inputs.trigger-ref}}
+          path: maven-artifact
+          fetch-depth: 0
