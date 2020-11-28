@@ -14,3 +14,6 @@ ij_formatter_off_tag = @formatter:off
 ij_formatter_on_tag = @formatter:on
 ij_formatter_tags_enabled = true
 ij_wrap_on_typing = true
+
+[{*.htm,*.html,*.ng,*.sht,*.shtm,*.shtml}]
+ij_html_do_not_indent_children_of_tags = ---
