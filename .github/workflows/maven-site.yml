@@ -1,5 +1,11 @@
 name: Maven site report publishing
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      trigger_repository:
+        required: true
+      trigger_ref:
+        required: true
 jobs:
   build:
     runs-on: ubuntu-latest
