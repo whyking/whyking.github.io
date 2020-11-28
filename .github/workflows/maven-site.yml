@@ -1,4 +1,4 @@
-name: Maven site report publishing
+name: Publish Maven site report
 on:
   workflow_dispatch:
     inputs:
