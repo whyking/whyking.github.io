@@ -30,15 +30,6 @@ jobs:
 
       - name: Generate Maven site report
         run: |
-          GITHUB_PAGES_PATH=$( \
-            mvn \
-              exec:exec \
-                --file .local/artifact/pom.xml \
-                --non-recursive \
-                --quiet \
-                -Dexec.executable=echo \
-                -Dexec.args='${github-pages.path}' \
-          )
           MAVEN_VERSION=$( \
             mvn \
               exec:exec \
@@ -48,6 +39,5 @@ jobs:
                 -Dexec.executable=echo \
                 -Dexec.args='${project.version}' \
           )
-          echo $GITHUB_PAGES_PATH
           echo $MAVEN_VERSION
 
